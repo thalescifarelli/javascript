@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Pratica 01</title>
+    <style>
+        body{
+            background-color: #c8a2c8;
+            font: normal 15px Arial;
+            text-align: center;
+            
+        }
+        section{
+            background: #81d8d0;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.349);
+        }
+        input#nr1{
+            width: 50px;
+        }
+        input#nr2{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora</h1>
+    </header>
+    <section>
+        <div>
+            <p>Selecione uma operação</p>
+            <p><input type="radio" name="radop" id="radsomar" checked>
+            <label for="radsomar">Somar</label>
+            <input type="radio" name="radop" id="radsubtrair">
+            <label for="radsubtrair">Subtrair</label>
+            <input type="radio" name="radop" id="radmultiplicar">
+            <label for="radmultiplicar">Multiplicar</label>
+            <input type="radio" name="radop" id="raddividir">
+            <label for="raddividir">Dividir</label></p>
+            <p>Primeiro Numero:<input type="text" name="nr1" id="nr1"> 
+                Segundo Numero:<input type="text" name="nr2" id="nr2"></p>
+            <p><input type="button" value="Calcular" onclick="calcular()"></p>
+        </div>
+        <div id="res">
+            <p>Resultado:</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Thales Cifarelli</p>
+    </footer>
+    <script>
+        
+        function calcular() {
+
+            var valor1 = window.document.querySelector('input#nr1')
+            var valor2 = window.document.querySelector('input#nr2')
+            var n1 = Number(valor1.value)
+            var n2 = Number(valor2.value)
+            var res = window.document.querySelector('div#res')
+            var op = window.document.getElementsByName('radop')
+            var operacao = ''
+
+            if(valor1.value.length == 0 || valor2.value.length == 0)
+            {
+                window.alert(`[ERRO]Verifique os dados e tente novamente!`)
+                res.innerHTML = `<p>Resultado:</p>`
+            }
+            else
+            {
+                if(op[0].checked)
+                {
+                    operacao = '+'
+                }
+                else if(op[1].checked)
+                {
+                    operacao = '-'
+                }
+                else if(op[2].checked)
+                {
+                    operacao = '*'
+                }
+                else 
+                {
+                    operacao = '/'
+                }
+
+
+                if (operacao == '+')
+                {
+                    res.innerHTML = `<p>Resultado:</p> <strong>${n1} + ${n2} = ${n1+n2}</strong>`
+                }
+                else if (operacao == '-')
+                {
+                    res.innerHTML = `<p>Resultado:</p> <strong>${n1} - ${n2} = ${n1-n2}</strong>`
+                }
+                else if (operacao == '/')
+                {
+                    res.innerHTML = `<p>Resultado:</p> <strong>${n1} / ${n2} = ${n1/n2}</strong>`
+                }
+                else if (operacao == '*')
+                {
+                    res.innerHTML = `<p>Resultado:</p> <strong>${n1} * ${n2} = ${n1*n2}</strong>`
+                }
+            }
+
+            
+        }
+
+    </script>
+</body>
+</html>
